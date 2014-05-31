@@ -1,0 +1,127 @@
+# config.mk
+#
+# Product-specific compile-time definitions.
+#
+TARGET_BOARD_PLATFORM := exynos4
+TARGET_SOC := exynos4x12
+
+# CPU options
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_SMP := true
+ARCH_ARM_HAVE_TLS_REGISTER := true
+
+TARGET_NO_BOOTLOADER := true
+#TARGET_NO_KERNEL := true
+TARGET_NO_RADIOIMAGE := true
+TARGET_PROVIDES_INIT_TARGET_RC := true
+TARGET_BOOTLOADER_BOARD_NAME := odroidq2
+TARGET_BOARD_INFO_FILE ?= device/hardkernel/odroidq2/board-info.txt
+
+BOARD_USES_GENERIC_AUDIO := false
+BOARD_USES_I2S_AUDIO := true
+BOARD_USES_PCM_AUDIO := false
+BOARD_USES_SPDIF_AUDIO := false
+
+# ULP Audio
+USE_ULP_AUDIO := false
+
+# ALP Audio
+BOARD_USE_ALP_AUDIO := false
+
+# SEC Camera
+USE_SEC_CAMERA := false
+CAMERA_USE_DIGITALZOOM := true
+
+# Enable JIT
+WITH_JIT := true
+
+TARGET_USERIMAGES_USE_EXT4 := true
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1073741824
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 2147483648
+BOARD_CACHEIMAGE_PARTITION_SIZE := 134217728
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_FLASH_BLOCK_SIZE := 4096
+
+BOARD_USES_HGL := true
+BOARD_NO_32BPP := true
+BOARD_EGL_CFG := device/samsung/smdk4x12/conf/egl.cfg
+
+BOARD_USES_HDMI_SUBTITLES := true
+BOARD_USES_HDMI := true
+BOARD_HDMI_STD := STD_720P
+BOARD_HDMI_DDC_CH := DDC_CH_I2C_2
+BOARD_USES_FIMGAPI := true
+
+BOARD_USES_HDMI_EDID := false
+
+BOARD_USE_SAMSUNG_COLORFORMAT := true
+BOARD_NONBLOCK_MODE_PROCESS := true
+BOARD_USE_STOREMETADATA := true
+BOARD_USE_METADATABUFFERTYPE := true
+BOARD_USES_MFC_FPS := false
+BOARD_USE_S3D_SUPPORT := true
+BOARD_USE_DRM := true
+BOARD_USE_CSC_FIMC := false
+
+BOARD_USES_FFMPEG := false
+
+# Enable V4L2 & ION
+BOARD_USE_V4L2 := false
+BOARD_USE_V4L2_ION := false
+
+SCREEN_WIDTH := 1280
+SCREEN_HEIGHT := 800
+DEFAULT_FB_NUM := 0
+
+# Wifi related defines
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+BOARD_HOSTAPD_DRIVER        := NL80211
+#BOARD_WPA_SUPPLICANT_DRIVER := WEXT
+#BOARD_HOSTAPD_DRIVER        := WEXT
+
+WPA_SUPPLICANT_VERSION      := VER_0_8_X
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
+BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_bcmdhd
+BOARD_WLAN_DEVICE           := bcmdhd
+WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/bcmdhd/parameters/firmware_path"
+WIFI_DRIVER_FW_PATH_STA     := "/system/etc/firmware/fw_bcmdhd.bin"
+WIFI_DRIVER_FW_PATH_P2P     := "/system/etc/firmware/fw_bcmdhd_p2p.bin"
+WIFI_DRIVER_FW_PATH_AP      := "/system/etc/firmware/fw_bcmdhd_apsta.bin"
+WIFI_DRIVER_MODULE_NAME		:= "bcmdhd"
+WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/bcmdhd.ko"
+WIFI_DRIVER_MODULE_ARG 		:= "iface_name=wlan firmware_path=/system/etc/firmware/fw_bcmdhd.bin nvram_path=/system/etc/firmware/bcmdhd.cal"
+
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_BLUETOOTH_BCM4329 := false
+
+USE_OPENGL_RENDERER := true
+
+BOARD_CAMERA	:= odroidq
+CAMERA_USE_DIGITALZOOM :=true
+
+BOARD_USES_MBM_GPS := true
+BOARD_GPS_LIBRARIES := gps.$(TARGET_PRODUCT)
+USE_QEMU_GPS_HARDWARE := false
+
+#
+# ARM Streamline debugger
+#
+ENABLE_ARM_STREAMLINE_DEBUGGER := true
+
+# ARM Streamline Version
+ifeq ($(ENABLE_ARM_STREAMLINE_DEBUGGER), true)
+
+ARM_STREAMLINE_VERSION := VERSION_5_14
+
+endif
+
+COMMON_GLOBAL_CFLAGS += -DEXYNOS4_ENHANCEMENTS
+
+BOARD_BMP180_INPUT_NAME := barometer
+
+BOARD_HAVE_BMP180 := true
+
