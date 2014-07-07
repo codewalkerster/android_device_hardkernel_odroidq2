@@ -81,7 +81,7 @@ PRODUCT_PACKAGES += \
 		gatord
 
 PRODUCT_COPY_FILES += \
-	device/hardkernel/odroidq2/drivers/gator_q.ko:system/lib/modules/gator.ko
+	device/hardkernel/odroidq2/drivers/gator.ko:system/lib/modules/gator.ko
 
 endif	
 
